@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script type="module" src="./js/script.js" defer></script>
+    <script src="./js/script.js" defer></script>
 </head>
 <body>
     <h1>Dice Game</h1>
     <div class="overAllContainer">
         <div class="gameBox">
             <div id="buttBox">
-                <button id="start">Start</button>
+                <button id="start" onclick="startGame()">Start</button>
                 <button id="reset">Reset</button>
             </div>
             <div>
@@ -23,7 +23,7 @@
                     <h2>Computer</h2>
                 </div>
             </div>
-            <button>Roll</button>
+            <button id="rollDices">Roll</button>
             <div id="resultBox">
                 <div id="playerResults">
                     <h3 id="playerCurrentRolledValues">
