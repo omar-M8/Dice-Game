@@ -1,0 +1,79 @@
+.overAllContainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body{
+    background-color: rgb(207, 227, 248);
+}
+
+.gameBox{
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+    justify-content: space-around;
+    background-color:rgb(207, 227, 248);
+    flex-direction: column;
+}
+
+h1, div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#playerBox{
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+}
+
+#computerBox{
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+}
+
+button{
+    padding: 8px;
+    margin: 3px;
+    background-color: rgb(181, 232, 234);
+    font:4px;
+    color: black;
+    font-weight:bold;
+}
+
+#resultBox{
+    margin: 5px;
+    justify-content: space-between;
+    align-content:start;
+    display: flex;
+}
+
+#buttBox{
+    justify-content: space-around;
+}
+
+#playerResults, #computerResults{
+    flex-direction: column;
+    margin: 10px;
+}
+
+#playerResults{
+    display: flex;
+    justify-content: left;
+    margin-right: 245px;
+
+    
+}
+
+ #computerResults{margin-left: -150px;
+
+ }
+
+
