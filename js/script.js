@@ -26,10 +26,24 @@ let player1dice2 = new Dice(1, 6);
 let computerDice1 = new Dice(1, 6);
 let computerDice2 = new Dice(1, 6);
 
-let playerCurrentRolledValue
+let playerCurrentRolledValue = document.getElementById('playerCurrentRolledValues')
+let playerCurrentRoundScore = document.getElementById('playerCurrentRoundScore')
+let playerTotalScore = document.getElementById('playerTotalScore')
+
+let computerCurrentRolledValues = document.getElementById('computerCurrentRolledValues')
+let computerCurrentRoundScore = document.getElementById('computerCurrentRoundScore')
+let computerTotalScore = document.getElementById('computerTotalScore')
+
+let playerCurrentRoundScoreInt;
+let playerTotalScoreInt;
+
+let computerCurrentRoundScoreInt;
+let computerTotalScoreInt;
 
 
 let rollCount = 0;
+let playerDicesValue1;
+let computerDicesValue1;
 
 
 function startGame() {
@@ -44,35 +58,42 @@ function startGame() {
 function rollDice() {
     console.log(rollCount)
     if (rollCount == 3){
+        if (totalPlayerScore > totalComputerScore) {
+            alert(`Congratulations! You won with a total score of ${totalPlayerScore} over the Computer's total score of ${totalComputerScore}`)
+        }
+        else{
+            alert(`Game Over! You lost the Computer had a total score ${totalComputerScore} and you had a total score of ${totalPlayerScore}`)
+        }
         alert("Game Over! If you would like to play again please click the Reset Button")
         return
     }
-
-    let playerCurrentRoundScore;
-    let computerCurrentRoundScore;
-    let playerDicesValue1;
-    let computerDicesValue1;
-
 
     //Roll Player's dice
     let playerDice1 = player1dice1.roll()
     let playerDice2 = player1dice2.roll()
 
+    //Roll Computer's dice
+    let compDice1 = computerDice1.roll()
+    let compDice2 = computerDice2.roll()
+
     if (player1dice1 == 1 || player1dice2 == 1){
         playerDicesValue1 == true;
+    }
+
+    if (compDice1 == 1 || compDice2 == 1){
+        computerDicesValue1 == true;
     }
 
     //Check Player's Dice values
     console.log(`Player Dice 1: ${playerDice1}`)
     console.log(`Player Dice 2: ${playerDice2}`)
 
-    //Roll Computer's dice
-    let compDice1 = computerDice1.roll()
-    let compDice2 = computerDice2.roll()
 
-    if (compDice1 == 1 || compDice2 == 1){
-        computerDicesValue1 == true;
-    }
+    //Show player's rolled Dice values
+    playerCurrentRolledValue.innerHTML = `Player's rolled dices are: ${playerDice1} and ${playerDice2}`
+
+    //Show computer's rolled dices values
+    computerCurrentRolledValues.innerHTML = `Computer's rolled dices are: ${compDice1} and ${compDice2}`
     
     //Check Computer's Dice values
     console.log(`Computer Dice 1: ${compDice1}`)
@@ -82,29 +103,45 @@ function rollDice() {
     if(playerDice1 == 1 || playerDice2 == 1 && (compDice1 != 1 && compDice2 != 1)){
 
         console.log(`We are in condition 1!`)
-        playerCurrentRoundScore = 0;
-        totalPlayerScore += playerCurrentRoundScore;
+        playerCurrentRoundScoreInt = 0;
+        totalPlayerScore += playerCurrentRoundScoreInt;
 
-        computerCurrentRoundScore = compDice1 + compDice2;
-        totalComputerScore += computerCurrentRoundScore;
+        computerCurrentRoundScoreInt = compDice1 + compDice2;
+        totalComputerScore += computerCurrentRoundScoreInt;
 
         console.log(`The total Player's score is: ${totalPlayerScore}`)
+
+        playerCurrentRoundScore.innerHTML = `Player's current round score: ${playerCurrentRoundScoreInt}`
+        playerTotalScore.innerHTML = `Player's total score: ${totalPlayerScore}`
+
         console.log(`The total Computer's score is: ${totalComputerScore}`)
+
+        computerCurrentRoundScore.innerHTML = `Computer's current round score: ${computerCurrentRoundScoreInt}`
+        computerTotalScore.innerHTML = `Computer's total score: ${totalComputerScore}`
+
         rollCount += 1
         return
     } 
 
     //Check if any of the Computer's dices have a value of 1
     if(compDice1 == 1 || compDice2 == 1 && (player1dice1 != 1 && player1dice2 != 1)){
-        console.log(`We are in condition 2!`)
-        computerCurrentRoundScore = 0;
-        totalComputerScore += computerCurrentRoundScore;
 
-        playerCurrentRoundScore = playerDice1 + playerDice2;
-        totalPlayerScore += playerCurrentRoundScore
+        console.log(`We are in condition 2!`)
+        computerCurrentRoundScoreInt = 0;
+        totalComputerScore += computerCurrentRoundScoreInt;
+
+        playerCurrentRoundScoreInt = playerDice1 + playerDice2;
+        totalPlayerScore += playerCurrentRoundScoreInt
 
         console.log(`The total Player's score is: ${totalPlayerScore}`)
+        playerCurrentRoundScore.innerHTML = `Player's current round score: ${playerCurrentRoundScoreInt}`
+        playerTotalScore.innerHTML = `Player's total score: ${totalPlayerScore}`
+
         console.log(`The total Computer's score is: ${totalComputerScore}`)
+        computerCurrentRoundScore.innerHTML = `Computer's current round score: ${computerCurrentRoundScoreInt}`
+        computerTotalScore.innerHTML = `Computer's total score: ${totalComputerScore}`
+
+        
         rollCount += 1
         return
     }
@@ -120,28 +157,42 @@ function rollDice() {
 
     else if(compDice1 == 1 && compDice2 == 1 && playerDice1 == 1 && playerDice2 == 1){
         console.log(`We are in condition 3!`)
-        playerCurrentRoundScore = 0;
-        totalPlayerScore += playerCurrentRoundScore;
+        playerCurrentRoundScoreInt = 0;
+        totalPlayerScore += playerCurrentRoundScoreInt;
 
-        computerCurrentRoundScore = 0;
-        totalComputerScore += computerCurrentRoundScore;
+        computerCurrentRoundScoreInt = 0;
+        totalComputerScore += computerCurrentRoundScoreInt;
 
         console.log(`The total Player's score is: ${totalPlayerScore}`)
+        playerCurrentRoundScore.innerHTML = `Player's current round score: ${playerCurrentRoundScoreInt}`
+        playerTotalScore.innerHTML = `Player's total score: ${totalPlayerScore}`
+
         console.log(`The total Computer's score is: ${totalComputerScore}`)
+        computerCurrentRoundScore.innerHTML = `Computer's current round score: ${computerCurrentRoundScoreInt}`
+        computerTotalScore.innerHTML = `Computer's total score: ${totalComputerScore}`
+
+
         rollCount += 1
         return
     }
 
     else{
 
-        playerCurrentRoundScore = playerDice1 + playerDice2;
-        totalPlayerScore += playerCurrentRoundScore
+        playerCurrentRoundScoreInt = 0;
+        playerCurrentRoundScoreInt = playerDice1 + playerDice2;
+        totalPlayerScore += playerCurrentRoundScoreInt
 
-        computerCurrentRoundScore = compDice1 + compDice2;
-        totalComputerScore += computerCurrentRoundScore;
+        computerCurrentRoundScoreInt = 0;
+        computerCurrentRoundScoreInt = compDice1 + compDice2;
+        totalComputerScore += computerCurrentRoundScoreInt;
 
         console.log(`The total Player's score is: ${totalPlayerScore}`)
+        playerCurrentRoundScore.innerHTML = `Player's current round score: ${playerCurrentRoundScoreInt}`
+        playerTotalScore.innerHTML = `Player's total score: ${totalPlayerScore}`        
+
         console.log(`The total Computer's score is: ${totalComputerScore}`)
+        computerCurrentRoundScore.innerHTML = `Computer's current round score: ${computerCurrentRoundScoreInt}`
+        computerTotalScore.innerHTML = `Computer's total score: ${totalComputerScore}`
     }
     
 

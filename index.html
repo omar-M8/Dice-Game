@@ -13,7 +13,7 @@
         <div class="gameBox">
             <div id="buttBox">
                 <button id="start" onclick="startGame()">Start</button>
-                <button id="reset">Reset</button>
+                <button id="reset" onclick="location.reload()">Reset</button>
             </div>
             <div>
                 <div id="playerBox">
@@ -42,12 +42,12 @@
                     </h3>
                     <h3 id="computerCurrentRoundScore">
                         Current Round score:
-                    </h3>    
+                    </h3>
+                    <!-- You likely need a total score tag for the computer here too -->
                     <h3 id="computerTotalScore">
-                        TotalScore:
-                    </h3>              
+                        Total Score:
+                    </h3>
                 </div>
-
             </div>
         </div>
     </div>
