@@ -47,7 +47,7 @@ let computerDicesValue1;
 
 
 function startGame() {
-    console.log('Game started!')
+    alert('Game started! Remember to click roll for a 4th time to see who won')
     if(rollCount > 0) {
         alert('Game has already started, If you want to Restart, click on the Reset button')
     }else{
@@ -61,10 +61,12 @@ function rollDice() {
         if (totalPlayerScore > totalComputerScore) {
             alert(`Congratulations! You won with a total score of ${totalPlayerScore} over the Computer's total score of ${totalComputerScore}`)
         }
-        else{
-            alert(`Game Over! You lost the Computer had a total score ${totalComputerScore} and you had a total score of ${totalPlayerScore}`)
+        else if(totalComputerScore == totalPlayerScore){
+            alert(`Tie! Both you and the computer had a total score of ${totalPlayerScore}`)
         }
-        alert("Game Over! If you would like to play again please click the Reset Button")
+        else{
+            alert(`Game Over! You lost the Computer had a total score ${totalComputerScore} and you had a total score of${totalPlayerScore}`)
+        }
         return
     }
 
